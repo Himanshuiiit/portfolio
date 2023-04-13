@@ -1,8 +1,8 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import cors from "cors";
-import nodemailer from "nodemailer";
-import dotenv from "dotenv";
+const cors = require("cors");
+const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
 
 dotenv.config();
 

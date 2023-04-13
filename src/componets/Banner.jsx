@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.png";
 import { BiChevronRightCircle } from "react-icons/bi";
-import "animate.css";
 import { HashLink } from "react-router-hash-link";
 
 const Banner = () => {
