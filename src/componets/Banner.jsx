@@ -45,7 +45,7 @@ const Banner = () => {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
       setIndex(1);
-      setDelta(500);
+      setDelta(100);
     } else {
       setIndex((prevIndex) => prevIndex + 1);
     }
@@ -94,6 +94,7 @@ const Banner = () => {
                 alt="Header Img"
                 drag
                 dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                dragElastic={0.5}
               />
             </div>
           </Col>
