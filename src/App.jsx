@@ -52,7 +52,7 @@ function App() {
           cy="45"
           r="42.5"
           stroke="#E2E2E2"
-          stroke-width="4"
+          stroke-width="5"
           opacity={0.1}
         />
         <motion.circle
@@ -60,7 +60,7 @@ function App() {
           cy="45"
           r="42.5"
           stroke="url(#paint0_linear_102_3)"
-          stroke-width="10"
+          stroke-width="5"
           style={{ pathLength: scrollYProgress }}
         />
 
