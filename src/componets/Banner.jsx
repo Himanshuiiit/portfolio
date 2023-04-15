@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.png";
 import { BiChevronRightCircle } from "react-icons/bi";
 import { HashLink } from "react-router-hash-link";
+import { motion } from "framer-motion";
 
 const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -74,16 +75,26 @@ const Banner = () => {
                 developer. With a strong foundation in my field and a drive to
                 continuously improve, I am a valuable asset to any team.
               </p>
-              <HashLink smooth to="#connect" className="text-decoration-none">
+              <HashLink
+                smooth
+                to="#connect"
+                className="text-decoration-none"
+              >
                 <button>
-                  Let's Connect <BiChevronRightCircle size={21}/>
+                  Let's Connect <BiChevronRightCircle size={21} />
                 </button>
               </HashLink>
             </div>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <div>
-              <img src={headerImg} className="p-5 m-3" alt="Header Img" />
+              <motion.img
+                src={headerImg}
+                className="p-5 m-3"
+                alt="Header Img"
+                drag
+                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              />
             </div>
           </Col>
         </Row>

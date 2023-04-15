@@ -15,6 +15,9 @@ import {
   SiAngular,
 } from "react-icons/si";
 import colorSharp from "../assets/img/color-sharp.png";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import { useAnimation, motion } from "framer-motion";
 
 export const Skills = () => {
   const responsive = {
@@ -37,9 +40,55 @@ export const Skills = () => {
     },
   };
 
+  const [ref, inView] = useInView({
+    threshold: 0.7,
+  });
+  const divAnimation = useAnimation();
+  const iconAnimation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      divAnimation.start({
+        rotateX: 0,
+        opacity: 1,
+        y: 0,
+        transition: {
+          type: "keyframes",
+          duration: 0.7,
+        },
+      });
+      iconAnimation.start({
+        opacity: 1,
+        y: 0,
+        transition: {
+          type: "keyframes",
+          duration: 0.8,
+        },
+      });
+    } else {
+      divAnimation.start({
+        opacity: 0,
+        rotateX: -90,
+        y: '100',
+        transition: {
+          type: "keyframes",
+          duration: 0.7,
+        },
+      });
+      iconAnimation.start({
+        opacity: 0,
+        y: '100%',
+        transition: {
+          type: "keyframes",
+          duration: 0.8,
+        },
+      });
+    }
+  }, [inView]);
+
   return (
-    <section className="skill" id="skills">
-      <div className="container">
+    <section className="skill" id="skills" ref={ref}>
+      <motion.div className="container" animate={divAnimation}>
         <div className="row">
           <div className="col-12">
             <div className="skill-bx wow zoomIn">
@@ -56,81 +105,81 @@ export const Skills = () => {
                 className="owl-carousel owl-theme skill-slider"
               >
                 {/*m1 = 95% m2 = 80% m3 = 90%*/}
-                <div className="item">
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter1} alt="Image" />
                   <h5>
                     <DiReact className="mx-1 mb-1" />
                     React js
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter1} alt="Image" />
                   <h5>
                     <SiJavascript size={14} className="mx-2 mb-1" />
                     JavaScript
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter2} alt="Image" />
                   <h5>
                     <SiTypescript size={14} className="mx-2 mb-1" />
                     TypeScript
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter3} alt="Image" />
                   <h5>
                     <SiTailwindcss size={16} className="mx-2 mb-1" />
                     Tailwind CSS
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter2} alt="Image" />
                   <h5>
                     <SiNodedotjs size={16} className="mx-1 mb-1" />
                     Node js
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter2} alt="Image" />
                   <h5>
                     <SiExpress size={20} className="mx-2 mb-1" />
                     Express js
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter2} alt="Image" />
                   <h5>
                     <SiMongodb size={18} className="mx-1 mb-1" />
                     MongoDB
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter1} alt="Image" />
                   <h5>
                     <DiJava size={24} className="mx-1 mb-2" />
                     Java
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter2} alt="Image" />
                   <h5>
                     <SiFlutter size={14} className="mx-1 mb-1" />
                     Flutter
                   </h5>
-                </div>
-                <div className="item">
+                </motion.div>
+                <motion.div className="item" animate={iconAnimation}>
                   <img src={meter2} alt="Image" />
                   <h5>
                     <SiAngular size={14} className="mx-2 mb-1" />
                     Angular
                   </h5>
-                </div>
+                </motion.div>
               </Carousel>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <img className="background-image-left" src={colorSharp} alt="Image" />
     </section>
   );
